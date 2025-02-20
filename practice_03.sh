@@ -1,15 +1,15 @@
 
-echo #1. fasta aln with fastq  sam
+echo #1.Generate FASTA and FASTQ to SAM
 #minimap2 -ax map-ont ref/sequence.fasta SRR16094814.fastq.gz > aln.sam
 
-echo #2. sort sam to bam
+echo #2.Sort SAM file (convert SAM to BAM)
 #./program/samtools-1.9/samtools sort aln.sam -o aln.bam
 
 
-echo #3. creat bam index
+echo #3.Create BAM index
 #./program/samtools-1.9/samtools index aln.bam
 
-echo #3.1 filter mapped read
+echo #3.1 Filter mapped read
 #./program/samtools-1.9/samtools view -b  -F 4 aln.bam > mapped.bam
 #./program/samtools-1.9/samtools index mapped.bam
 
@@ -46,3 +46,8 @@ do
 
 
 done 
+
+
+
+
+

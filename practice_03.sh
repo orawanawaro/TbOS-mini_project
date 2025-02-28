@@ -20,34 +20,3 @@ echo #5. convert bam to vcf
 #./program/bcftools-1.21/bcftools mpileup -Ov -f ref/sequence.fasta mapped.bam | ./program/bcftools-1.21/bcftools call -mv -o sample.vcf
 
 #6. funtion annotation
-
-#mkdir output
-
-for i in $( ls dataset/sample/*.gz);
-
-do
-    echo $i
-    fl=$(echo $i | cut -d"/" -f3 | cut -d"_" -f1)
-    #mkdir -p output/$fl
-   
-    #step 0 count read
-    seqkit stat $i > output/$fl/stat.txt 
-
-    #2. fasta aln with fastq  sam
-    minimap2 -ax map-ont ref/sequence.fasta $i > output/$fl/aln.sam
-
-    
-
-
-
-
-
-
-
-
-done 
-
-
-
-
-
